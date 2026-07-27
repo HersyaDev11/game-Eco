@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DndContext, useDraggable, useDroppable, DragEndEvent } from '@dnd-kit/core';
@@ -237,7 +237,7 @@ function DraggableTrash({ trash, onTrashClick }: { trash: TrashItemData, onTrash
             e.stopPropagation();
             handleClick();
          } else if (listeners?.onPointerDown) {
-            listeners.onPointerDown(e as any);
+            listeners.onPointerDown(e as unknown as React.PointerEvent<Element>);
          }
       }}
       className={`absolute z-50 touch-none ${isLocked ? 'cursor-pointer' : isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
@@ -280,7 +280,7 @@ function DroppableBin({ id, label, color, emoji }: { id: string, label: string, 
   });
   
   // Real 3D Recycling Bin Colors
-  const binStyles: Record<string, any> = {
+  const binStyles: Record<string, Record<string, string>> = {
     'bg-green-500': { 
         front: 'bg-emerald-500', 
         side: 'bg-emerald-600', 
