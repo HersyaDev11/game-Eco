@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useGameStore, Student } from '../store/gameStore';
+import { useGameStore, Student, GameDifficulty } from '../store/gameStore';
 import { initMultiplayerListener, startGame, endGame } from '../services/multiplayer';
 
 export default function HostScreen() {
@@ -205,7 +205,7 @@ export default function HostScreen() {
                        <select 
                          className="w-full bg-white border-2 border-slate-300 rounded-xl p-2 font-bold text-slate-700 outline-none cursor-pointer"
                          value={roomSettings.difficulty}
-                         onChange={(e) => setRoomSettings({ ...roomSettings, difficulty: e.target.value as any })}
+                         onChange={(e) => setRoomSettings({ ...roomSettings, difficulty: e.target.value as GameDifficulty })}
                        >
                           <option value="mudah">Mudah (2 Jenis)</option>
                           <option value="normal">Normal (3 Jenis)</option>
