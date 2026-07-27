@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Fredoka', sans-serif;
+  --color-eco-green: #10b981;
+  --color-eco-emerald: #059669;
+  --color-eco-teal: #14b8a6;
+  --color-eco-blue: #3b82f6;
+  --color-eco-yellow: #f59e0b;
+  --color-eco-red: #ef4444;
+  --color-eco-dark: #0f172a;
+}
+
+body {
+  background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 50%, #34d399 100%);
+  color: var(--color-eco-dark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
+  min-height: 100vh;
+}
+
+@keyframes pan {
+  0% { transform: translateX(-100vw); }
+  100% { transform: translateX(100vw); }
+}
