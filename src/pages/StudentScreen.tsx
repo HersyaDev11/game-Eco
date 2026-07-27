@@ -5,7 +5,7 @@ import { DndContext, useDraggable, useDroppable, DragEndEvent } from '@dnd-kit/c
 import { Howl } from 'howler';
 import { useGameStore } from '../store/gameStore';
 import { initMultiplayerListener, joinRoom, sendScoreUpdate } from '../services/multiplayer';
-import { TRASH_BINS, TRASH_ITEMS, getRandomTrash, TrashItemData } from '../utils/gameData';
+import { TRASH_BINS, getRandomTrash, TrashItemData } from '../utils/gameData';
 
 const soundBloop = new Howl({ src: ['https://actions.google.com/sounds/v1/water/air_release_underwater.ogg'] });
 const soundTada = new Howl({ src: ['https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg'] });

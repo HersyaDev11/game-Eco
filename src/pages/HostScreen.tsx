@@ -89,8 +89,7 @@ export default function HostScreen() {
   const sortedStudents = [...students].sort((a, b) => b.score - a.score);
   const sortedGlobal = [...globalScores].sort((a, b) => b.score - a.score);
 
-  const merahScore = students.filter(s => s.team === 'merah').reduce((acc, curr) => acc + curr.score, 0);
-  const biruScore = students.filter(s => s.team === 'biru').reduce((acc, curr) => acc + curr.score, 0);
+
   const merahMistakes = students.filter(s => s.team === 'merah').reduce((acc, curr) => acc + (curr.mistakes || 0), 0);
   const biruMistakes = students.filter(s => s.team === 'biru').reduce((acc, curr) => acc + (curr.mistakes || 0), 0);
   const merahHP = Math.max(0, 100 - merahMistakes * roomSettings.damage);
