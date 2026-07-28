@@ -97,31 +97,31 @@ export default function HostScreen() {
   const biruHP = Math.max(0, 100 - biruMistakes * roomSettings.damage);
 
   return (
-    <div className="min-h-screen p-8 flex flex-col relative overflow-hidden">
+    <div className="min-h-screen p-4 sm:p-8 flex flex-col relative overflow-x-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-white/20 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-teal-200/40 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
 
       {/* Header */}
-      <header className="flex justify-between items-center mb-12 bg-white p-6 rounded-[2.5rem] border-4 border-slate-100 shadow-[0_15px_0_0_rgba(16,185,129,0.2)] relative z-20">
+      <header className="flex flex-col lg:flex-row justify-between items-center gap-6 mb-12 bg-white p-4 sm:p-6 rounded-[2.5rem] border-4 border-slate-100 shadow-[0_15px_0_0_rgba(16,185,129,0.2)] relative z-20 text-center lg:text-left">
         <div>
-          <h1 className="text-5xl font-black text-emerald-500">EcoSort HIMATI</h1>
-          <p className="text-slate-400 mt-1 font-bold tracking-widest uppercase text-sm">Dashboard Panitia HIMATI</p>
+          <h1 className="text-4xl sm:text-5xl font-black text-emerald-500">EcoSort HIMATI</h1>
+          <p className="text-slate-400 mt-1 font-bold tracking-widest uppercase text-xs sm:text-sm">Dashboard Panitia HIMATI</p>
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 w-full lg:w-auto">
           <button 
             onClick={() => setShowGlobal(!showGlobal)}
-            className="px-6 py-4 bg-purple-100 text-purple-500 font-black rounded-3xl border-4 border-purple-200 shadow-[0_6px_0_0_#e9d5ff] hover:brightness-95 active:shadow-none active:translate-y-[6px] transition-all"
+            className="px-4 py-3 sm:px-6 sm:py-4 bg-purple-100 text-purple-500 font-black rounded-3xl border-4 border-purple-200 shadow-[0_6px_0_0_#e9d5ff] hover:brightness-95 active:shadow-none active:translate-y-[6px] transition-all text-sm sm:text-base w-full sm:w-auto"
           >
             {showGlobal ? 'Tutup Klasemen' : '🏆 Klasemen Global'}
           </button>
-          <div className="text-center px-8 py-3 bg-slate-100 rounded-3xl border-4 border-slate-200">
-            <p className="text-sm text-slate-400 font-black mb-1 uppercase tracking-widest">PIN Ruangan</p>
-            <p className="text-5xl font-black text-slate-800 tracking-[0.2em]">{roomId}</p>
+          <div className="text-center px-4 py-2 sm:px-8 sm:py-3 bg-slate-100 rounded-3xl border-4 border-slate-200 flex-1 sm:flex-none">
+            <p className="text-xs sm:text-sm text-slate-400 font-black mb-1 uppercase tracking-widest">PIN Ruangan</p>
+            <p className="text-3xl sm:text-5xl font-black text-slate-800 tracking-[0.2em]">{roomId}</p>
           </div>
-          <div className="text-center px-6 py-3 bg-blue-50 rounded-3xl border-4 border-blue-200">
-             <p className="text-sm text-blue-400 font-black mb-1 uppercase tracking-widest">Peserta</p>
-             <p className="text-4xl font-black text-blue-500">{students.length}</p>
+          <div className="text-center px-4 py-2 sm:px-6 sm:py-3 bg-blue-50 rounded-3xl border-4 border-blue-200 flex-1 sm:flex-none">
+             <p className="text-xs sm:text-sm text-blue-400 font-black mb-1 uppercase tracking-widest">Peserta</p>
+             <p className="text-3xl sm:text-4xl font-black text-blue-500">{students.length}</p>
           </div>
         </div>
       </header>
@@ -255,20 +255,20 @@ export default function HostScreen() {
               animate={{ opacity: 1 }}
               className="w-full max-w-6xl flex flex-col items-center"
             >
-              <div className="w-full flex justify-between items-end mb-8">
+              <div className="w-full flex flex-col lg:flex-row justify-between items-center lg:items-end gap-6 mb-8">
                 {/* Timer */}
-                <div className="text-center bg-white px-10 py-6 rounded-[3rem] border-8 border-slate-100 shadow-[0_15px_0_0_#f1f5f9]">
-                  <p className="text-slate-400 font-black tracking-widest uppercase mb-2 text-xl">Waktu</p>
-                  <div className={`text-7xl font-black ${timeLeft <= 10 ? 'text-rose-500 animate-bounce' : 'text-slate-800'}`}>
+                <div className="text-center bg-white px-8 py-4 sm:px-10 sm:py-6 rounded-[2rem] sm:rounded-[3rem] border-8 border-slate-100 shadow-[0_15px_0_0_#f1f5f9] w-full lg:w-auto">
+                  <p className="text-slate-400 font-black tracking-widest uppercase mb-1 sm:mb-2 text-lg sm:text-xl">Waktu</p>
+                  <div className={`text-5xl sm:text-7xl font-black ${timeLeft <= 10 ? 'text-rose-500 animate-bounce' : 'text-slate-800'}`}>
                     {timeLeft}
                   </div>
                 </div>
 
                  {/* Survival Mode HP Bars */}
-                <div className="flex-1 max-w-3xl mx-8 bg-white p-6 rounded-[3rem] border-8 border-slate-100 shadow-[0_15px_0_0_#f1f5f9] flex flex-col justify-center gap-4">
-                   <div className="flex justify-between items-center w-full">
-                      <div className="text-rose-500 font-black text-2xl w-24">TIM MERAH</div>
-                      <div className="flex-1 mx-4 h-10 bg-slate-100 rounded-full overflow-hidden flex border-4 border-slate-200 shadow-inner relative">
+                <div className="flex-1 w-full max-w-3xl mx-0 lg:mx-8 bg-white p-4 sm:p-6 rounded-[2rem] sm:rounded-[3rem] border-8 border-slate-100 shadow-[0_15px_0_0_#f1f5f9] flex flex-col justify-center gap-4">
+                   <div className="flex flex-col sm:flex-row justify-between items-center w-full gap-2">
+                      <div className="text-rose-500 font-black text-xl sm:text-2xl w-full sm:w-24 text-center sm:text-left">TIM MERAH</div>
+                      <div className="w-full sm:flex-1 mx-0 sm:mx-4 h-8 sm:h-10 bg-slate-100 rounded-full overflow-hidden flex border-4 border-slate-200 shadow-inner relative">
                          <motion.div 
                             className="h-full bg-rose-500 relative"
                             animate={{ width: `${merahHP}%` }}
@@ -277,12 +277,12 @@ export default function HostScreen() {
                             <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)] bg-[length:20px_20px] animate-[shimmer_1s_infinite_linear]"></div>
                          </motion.div>
                       </div>
-                      <div className="text-rose-500 font-black text-3xl w-20 text-right">{merahHP}%</div>
+                      <div className="text-rose-500 font-black text-2xl sm:text-3xl w-full sm:w-20 text-center sm:text-right">{merahHP}%</div>
                    </div>
 
-                   <div className="flex justify-between items-center w-full">
-                      <div className="text-blue-500 font-black text-2xl w-24">TIM BIRU</div>
-                      <div className="flex-1 mx-4 h-10 bg-slate-100 rounded-full overflow-hidden flex border-4 border-slate-200 shadow-inner relative">
+                   <div className="flex flex-col sm:flex-row justify-between items-center w-full gap-2">
+                      <div className="text-blue-500 font-black text-xl sm:text-2xl w-full sm:w-24 text-center sm:text-left">TIM BIRU</div>
+                      <div className="w-full sm:flex-1 mx-0 sm:mx-4 h-8 sm:h-10 bg-slate-100 rounded-full overflow-hidden flex border-4 border-slate-200 shadow-inner relative">
                          <motion.div 
                             className="h-full bg-blue-500 relative"
                             animate={{ width: `${biruHP}%` }}
@@ -291,7 +291,7 @@ export default function HostScreen() {
                             <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)] bg-[length:20px_20px] animate-[shimmer_1s_infinite_linear]"></div>
                          </motion.div>
                       </div>
-                      <div className="text-blue-500 font-black text-3xl w-20 text-right">{biruHP}%</div>
+                      <div className="text-blue-500 font-black text-2xl sm:text-3xl w-full sm:w-20 text-center sm:text-right">{biruHP}%</div>
                    </div>
                 </div>
               </div>
@@ -344,7 +344,7 @@ export default function HostScreen() {
                  </span>
               </div>
 
-              <div className="flex justify-center items-end gap-6 h-[450px]">
+              <div className="flex justify-center items-end gap-2 sm:gap-6 h-[300px] sm:h-[450px] scale-[0.55] sm:scale-100 origin-bottom mt-10 sm:mt-0">
                 {/* 2nd Place */}
                 {sortedStudents[1] && (
                   <motion.div 
