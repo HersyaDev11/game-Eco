@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useGameStore, Student, GameDifficulty } from '../store/gameStore';
+import { useGameStore } from '../store/gameStore';
+import type { Student, GameDifficulty } from '../store/gameStore';
 import { initMultiplayerListener, startGame, endGame } from '../services/multiplayer';
 
 export default function HostScreen() {

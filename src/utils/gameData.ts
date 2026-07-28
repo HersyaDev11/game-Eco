@@ -19,21 +19,19 @@ export const TRASH_BINS = [
   { id: 'b3', label: 'B3', color: 'bg-red-500', emoji: '🔋' },
 ];
 
-const baseImg = '/@fs/C:/Users/ASUS/.gemini/antigravity-ide/brain/ca322788-d1f1-4054-a5c3-3a4a8cddcbf3';
-
 export const TRASH_ITEMS: Omit<TrashItemData, 'id'>[] = [
-  { name: 'Sisa Apel', category: 'organik', emoji: '🍎', imageUrl: `${baseImg}/trash_organik_1785090099289.png` },
-  { name: 'Kulit Pisang', category: 'organik', emoji: '🍌', imageUrl: `${baseImg}/trash_organik_1785090099289.png` },
-  { name: 'Daun Kering', category: 'organik', emoji: '🍂', imageUrl: `${baseImg}/trash_organik_1785090099289.png` },
-  { name: 'Botol Plastik', category: 'anorganik', emoji: '🍾', imageUrl: `${baseImg}/trash_anorganik_1785090109033.png` },
-  { name: 'Kantong Plastik', category: 'anorganik', emoji: '🛍️', imageUrl: `${baseImg}/trash_anorganik_1785090109033.png` },
-  { name: 'Kaleng Minuman', category: 'anorganik', emoji: '🥫', imageUrl: `${baseImg}/trash_anorganik_1785090109033.png` },
-  { name: 'Kardus Bekas', category: 'kertas', emoji: '📦', imageUrl: `${baseImg}/trash_kertas_1785090119871.png` },
-  { name: 'Koran Lama', category: 'kertas', emoji: '📰', imageUrl: `${baseImg}/trash_kertas_1785090119871.png` },
-  { name: 'Buku Bekas', category: 'kertas', emoji: '📚', imageUrl: `${baseImg}/trash_kertas_1785090119871.png` },
-  { name: 'Baterai Bekas', category: 'b3', emoji: '🔋', imageUrl: `${baseImg}/trash_b3_1785090129654.png` },
-  { name: 'Lampu Bohlam', category: 'b3', emoji: '💡', imageUrl: `${baseImg}/trash_b3_1785090129654.png` },
-  { name: 'Obat Kadaluarsa', category: 'b3', emoji: '💊', imageUrl: `${baseImg}/trash_b3_1785090129654.png` },
+  { name: 'Sisa Apel', category: 'organik', emoji: '🍎' },
+  { name: 'Kulit Pisang', category: 'organik', emoji: '🍌' },
+  { name: 'Daun Kering', category: 'organik', emoji: '🍂' },
+  { name: 'Botol Plastik', category: 'anorganik', emoji: '🍾' },
+  { name: 'Kantong Plastik', category: 'anorganik', emoji: '🛍️' },
+  { name: 'Kaleng Minuman', category: 'anorganik', emoji: '🥫' },
+  { name: 'Kardus Bekas', category: 'kertas', emoji: '📦' },
+  { name: 'Koran Lama', category: 'kertas', emoji: '📰' },
+  { name: 'Buku Bekas', category: 'kertas', emoji: '📚' },
+  { name: 'Baterai Bekas', category: 'b3', emoji: '🔋' },
+  { name: 'Lampu Bohlam', category: 'b3', emoji: '💡' },
+  { name: 'Obat Kadaluarsa', category: 'b3', emoji: '💊' },
 ];
 
 export const getRandomTrash = (difficulty: GameDifficulty = 'normal'): TrashItemData => {

@@ -1,4 +1,5 @@
-import { Student, RoomSettings, useGameStore } from '../store/gameStore';
+import { useGameStore } from '../store/gameStore';
+import type { Student, RoomSettings } from '../store/gameStore';
 
 export type MessageType = 
   | { type: 'JOIN_ROOM'; roomId: string; student: Student }
