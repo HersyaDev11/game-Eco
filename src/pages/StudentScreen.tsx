@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { DndContext, useDraggable, useDroppable, DragEndEvent } from '@dnd-kit/core';
+import { DndContext, useDraggable, useDroppable, DragEndEvent, useSensors, useSensor, TouchSensor, MouseSensor } from '@dnd-kit/core';
 import { Howl } from 'howler';
 import { useGameStore } from '../store/gameStore';
 import { initMultiplayerListener, joinRoom, sendScoreUpdate } from '../services/multiplayer';
@@ -20,6 +20,19 @@ export default function StudentScreen() {
   const [currentTrash, setCurrentTrash] = useState<TrashItemData | null>(null);
   const [combo, setCombo] = useState(0);
   const [vibrateMode, setVibrateMode] = useState<'none' | 'success' | 'error'>('none');
+
+  const sensors = useSensors(
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
+    useSensor(MouseSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    })
+  );
 
   useEffect(() => {
     if (!studentId || !studentName || !studentTeam) {
@@ -157,7 +170,7 @@ export default function StudentScreen() {
             </div>
 
             {/* Game Area */}
-            <DndContext onDragEnd={handleDragEnd}>
+            <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
               <div className="flex-1 flex flex-col justify-center items-center relative h-64">
                 <AnimatePresence>
                   {currentTrash && (
@@ -167,7 +180,7 @@ export default function StudentScreen() {
               </div>
 
               {/* Bins Area */}
-              <div className={`grid ${roomSettings.difficulty === 'mudah' ? 'grid-cols-2' : roomSettings.difficulty === 'normal' ? 'grid-cols-3' : 'grid-cols-2 md:grid-cols-4'} gap-5 mt-auto mb-4 w-full`}>
+              <div className={`grid ${roomSettings.difficulty === 'mudah' ? 'grid-cols-2' : roomSettings.difficulty === 'normal' ? 'grid-cols-3' : 'grid-cols-2 md:grid-cols-4'} gap-2 sm:gap-5 mt-auto mb-4 w-full place-items-center`}>
                 {TRASH_BINS.filter(bin => {
                   if (bin.id === 'organik' || bin.id === 'anorganik') return true;
                   if (bin.id === 'kertas' && (roomSettings.difficulty === 'normal' || roomSettings.difficulty === 'sulit')) return true;
@@ -321,12 +334,14 @@ function DroppableBin({ id, label, color, emoji }: { id: string, label: string, 
   return (
     <div
       ref={setNodeRef}
-      className={`relative w-[120px] h-[160px] mx-auto transition-transform duration-300 ${isOver ? 'scale-110 z-20' : 'z-10'}`}
+      className={`relative w-[80px] sm:w-[120px] h-[120px] sm:h-[160px] mx-auto transition-transform duration-300 ${isOver ? 'scale-110 z-20' : 'z-10'}`}
       style={{ perspective: '1000px' }}
     >
+      {/* Responsive Wrapper for Scale */}
+      <div className="w-full h-full absolute top-2 sm:top-6 scale-[0.7] sm:scale-100 origin-top flex justify-center">
       {/* 3D Container */}
       <div 
-        className="w-full h-full absolute top-6"
+        className="w-[120px] h-[160px] absolute"
         style={{ 
           transformStyle: 'preserve-3d', 
           transform: 'rotateX(-15deg) rotateY(-20deg)' 
@@ -404,6 +419,7 @@ function DroppableBin({ id, label, color, emoji }: { id: string, label: string, 
              style={{ transformOrigin: 'bottom center', transform: 'rotateX(-90deg)' }}
            ></div>
         </div>
+      </div>
       </div>
     </div>
   );
