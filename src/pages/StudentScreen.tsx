@@ -107,7 +107,7 @@ export default function StudentScreen() {
   }
 
   return (
-    <div className={`min-h-screen flex flex-col items-center justify-center p-6 transition-colors duration-300 relative overflow-hidden z-0 bg-gradient-to-b ${skyGradient}`}>
+    <div className={`fixed inset-0 w-full h-full flex flex-col items-center justify-center p-6 transition-colors duration-300 overflow-hidden z-0 bg-gradient-to-b select-none touch-none ${skyGradient}`}>
       {/* Cartoon Nature Background */}
       
       {/* Sun / Moon based on team */}
